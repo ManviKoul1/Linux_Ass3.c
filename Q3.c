@@ -6,11 +6,11 @@ void *start_routine;
 void arg
 int ret;
 
-/* initialized with default attributes */
+/* default attributes */
 ret = pthread_attr_init(&tattr);
 
-/* call an appropriate functions to alter a default value */
+/*  default value */
 ret = pthread_attr_*(&tattr,SOME_ATRIBUTE_VALUE_PARAMETER);
 
-/* create the thread */
+/* create thread */
 ret = pthread_create(&tid, &tattr, start_routine, arg);
