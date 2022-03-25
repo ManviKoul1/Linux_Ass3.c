@@ -1,3 +1,7 @@
+//1.Write a multithreading program, where threads runs same shared golbal variable of the
+//process between them.
+
+
 #include <pthread.h>
 #include <stdio.h>
 #include <stdlib.h>
