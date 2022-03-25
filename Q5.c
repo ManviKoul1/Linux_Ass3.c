@@ -1,3 +1,6 @@
+//5.Write a program that implements threads synchronization using mutex techniques.
+
+
 #include <stdio.h>
 #include <pthread.h>
 
