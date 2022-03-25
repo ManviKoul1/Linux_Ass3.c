@@ -1,45 +1,26 @@
-2.Write a program where thread cancel itself.(use pthread_cancel()).
+//2.Write a program where thread cancel itself.(use pthread_cancel()).
 
-#define _OPEN_THREADS                                                           
-#include <errno.h>                                                              
-#include <pthread.h>                                                            
-#include <stdio.h>                                                              
-#include <string.h>                                                             
-#include <unistd.h>                                                             
-                                                                                
-int  thstatus;                                                                  
-                                                                                
-void * thread(void *arg)                                                        
-{                                                                               
- puts("thread has started. now sleeping");                                      
- while (1)                                                                      
-   sleep(1);                                                                    
-}                                                                               
-                                                                                
-main(int argc, char *argv[])                                                    
-{                                                                               
- pthread_t      thid;                                                           
- void           *status;                                                        
-                                                                                
- if ( pthread_create(&thid, NULL, thread, NULL) != 0) {                         
-   perror("pthread_create failed");                                             
-   exit(2);                                                                     
- }                                                                              
-                                                                                
- if ( pthread_cancel(thid) == -1 ) {                                            
-   perror("pthread_cancel failed");                                             
-   exit(3);                                                                     
- }                                                                              
-                                                                                
- if ( pthread_join(thid, &status)== -1 ) {                                      
-   perror("pthread_join failed");                                               
-   exit(4);                                                                     
- }                                                                              
-                                                                                
- if ( status == (int *)-1 )                                                     
-   puts("thread was cancelled");                                                
- else                                                                           
-   puts("thread was not cancelled");                                            
-                                                                                
- exit(0);                                                                       
-}   
+#include<pthread.h> 
+#include<stdio.h>
+
+ void *print(void *threadid)
+{
+printf("\nPrints thread\n");
+while(1);
+}
+int main()
+{
+pthread_t thread;
+int rc,t=0;
+printf("Now we are creating thread \n");
+rc = pthread_create(&thread,NULL,print,NULL);
+printf("\n The thread ID is :- %u", thread);
+sleep(6);
+t = pthread_cancel(pthread_self);
+if(t==0)
+{
+printf("\n Now thread is cancelled\n");
+}
+printf("UPDATED\n");  
+printf("\nThread ID IS :- %u\n",thread);
+}
