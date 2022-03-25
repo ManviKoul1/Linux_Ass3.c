@@ -1,3 +1,6 @@
+//Write a program that changes the default properties of newly created posix threads.(ex: to
+//change default pthread stack size )
+
 #include <pthread.h> 
 
 pthread_attr_t tattr;
